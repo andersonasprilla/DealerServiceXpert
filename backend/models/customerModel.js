@@ -31,7 +31,7 @@ const customerSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    status: {
+    isWaiting: {
       type: Boolean,
       required: true,
     },
