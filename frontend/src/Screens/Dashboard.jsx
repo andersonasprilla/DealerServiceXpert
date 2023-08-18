@@ -1,8 +1,18 @@
+import { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import customers from "../customers";
 import Customer from "../components/Customer";
+import axios from "axios";
 
 const Dashboard = () => {
+  const [customers, setCustomers] = useState([]);
+
+  useEffect(() => {
+    const fetchCustomers = async () => {
+      const { data } = await axios.get("/api/customers");
+      setCustomers(data);
+    };
+    fetchCustomers();
+  }, []);
   return (
     <>
       <h1>Customers</h1>
