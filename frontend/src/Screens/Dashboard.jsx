@@ -15,7 +15,7 @@ const Dashboard = () => {
   }, []);
   return (
     <>
-      <h1>Customers</h1>
+      <h1>Daily Service Record</h1>
       <Row>
         {customers.map((customer) => (
           <Col key={customer._id} sm={12} md={6} lg={4} xl={3}>

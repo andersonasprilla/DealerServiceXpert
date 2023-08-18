@@ -13,7 +13,7 @@ const customers = [
     _id: "2",
     tag: "6896",
     ro: "503371",
-    vehicle: "Civic 2006",
+    vehicle: "Ridgeline 2017",
     name: "Haiyan Li",
     phone: "4135751923",
     description: "Maintenance.",

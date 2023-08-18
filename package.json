@@ -13,7 +13,8 @@
   "author": "Luis Asprilla",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongoose": "^7.4.3"
   },
   "devDependencies": {
     "concurrently": "^8.2.0",
