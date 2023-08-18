@@ -1,0 +1,15 @@
+{
+  "name": "dsxpert",
+  "version": "1.0.0",
+  "description": "RickCase Service WebApp",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "author": "Luis Asprilla",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
