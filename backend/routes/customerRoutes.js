@@ -7,8 +7,6 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const customers = await Customer.find({});
-    throw new Error("Some Error");
-
     res.json(customers);
   })
 );
