@@ -1,28 +1,55 @@
-import { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import Customer from "../components/Customer";
-import axios from "axios";
+import { useGetCustomersQuery } from "../slices/customersApiSlice";
+import { Table } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 const Dashboard = () => {
-  const [customers, setCustomers] = useState([]);
+  const { data: customers, isLoading, error } = useGetCustomersQuery();
 
-  useEffect(() => {
-    const fetchCustomers = async () => {
-      const { data } = await axios.get("/api/customers");
-      setCustomers(data);
-    };
-    fetchCustomers();
-  }, []);
   return (
     <>
-      <h1>Daily Service Record</h1>
-      <Row>
-        {customers.map((customer) => (
-          <Col key={customer._id} sm={12} md={6} lg={4} xl={3}>
-            <Customer customer={customer} />
-          </Col>
-        ))}
-      </Row>
+      {isLoading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant={"danger"}>
+          {error?.data?.message || error.error}
+        </Message>
+      ) : (
+        <>
+          <h1>Daily Service Record</h1>
+
+          <Table striped bordered hover>
+            <thead className='custom-header'>
+              <tr>
+                <th>Tag</th>
+                <th>Ro</th>
+                <th>Vehicle</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Description</th>
+                <th>Is Waiting</th>
+              </tr>
+            </thead>
+            <div style={{ marginBottom: "10px" }}></div>
+            <LinkContainer to={"/customer/:id"}>
+              <tbody>
+                {customers.map((customer) => (
+                  <tr key={customer.tag}>
+                    <td>{customer.tag}</td>
+                    <td>{customer.ro}</td>
+                    <td>{customer.vehicle}</td>
+                    <td>{customer.name}</td>
+                    <td>{customer.phone}</td>
+                    <td>{customer.description}</td>
+                    <td>{customer.isWaiting === "true" ? "Yes" : "No"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </LinkContainer>
+          </Table>
+        </>
+      )}
     </>
   );
 };

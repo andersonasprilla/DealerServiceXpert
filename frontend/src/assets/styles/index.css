@@ -23,6 +23,10 @@ main {
   white-space: nowrap; /* Prevent wrapping */
 }
 
+.custom-header {
+  background-color: rgb(221, 221, 227);
+}
+
 table td,
 table th {
   text-align: center;
