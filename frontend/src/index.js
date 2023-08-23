@@ -15,12 +15,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Dashboard from "./Screens/Dashboard";
 import CustomerScreen from "./Screens/CustomerScreen";
+import LoginScreen from "./Screens/LoginScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<Dashboard />} />
       <Route path='/customer/:id' element={<CustomerScreen />} />
+      <Route path='/login' element={<LoginScreen />} />
     </Route>
   )
 );
