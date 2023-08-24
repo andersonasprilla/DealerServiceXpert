@@ -31,7 +31,7 @@ const Dashboard = () => {
                 <th>Is Waiting</th>
               </tr>
             </thead>
-            <div style={{ marginBottom: "10px" }}></div>
+            {/* <div style={{ marginBottom: "10px" }}></div> */}
             <LinkContainer to={"/customer/:id"}>
               <tbody>
                 {customers.map((customer) => (
