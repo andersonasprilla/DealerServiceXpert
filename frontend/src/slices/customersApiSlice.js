@@ -3,7 +3,7 @@ import { apiSlice } from "./apiSlice";
 
 export const customersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getCustomers: builder.query({
+    getMyCustomers: builder.query({
       query: () => ({
         url: CUSTOMERS_URL,
       }),
@@ -15,8 +15,25 @@ export const customersApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 5,
     }),
+    createCustomer: builder.mutation({
+      query: () => ({
+        url: CUSTOMERS_URL,
+        method: "POST",
+      }),
+      invalidatesTags: ["Customer"],
+    }),
+    deleteCustomer: builder.mutation({
+      query: (customerId) => ({
+        url: `${CUSTOMERS_URL}/${customerId}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useGetCustomersQuery, useGetCustomerDetailsQuery } =
-  customersApiSlice;
+export const {
+  useGetMyCustomersQuery,
+  useGetCustomerDetailsQuery,
+  useCreateCustomerMutation,
+  useDeleteCustomerMutation,
+} = customersApiSlice;

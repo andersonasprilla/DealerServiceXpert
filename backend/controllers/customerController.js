@@ -1,12 +1,12 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import Customer from "../models/customerModel.js";
 
-// @desc    Fetch all customers
+// @desc    Fetch my customers
 // @route   GET /api/customers
-// @access  Public
-const getCustomers = asyncHandler(async (req, res) => {
-  const customers = await Customer.find({});
-  res.json(customers);
+// @access  Private
+const getMyCustomers = asyncHandler(async (req, res) => {
+  const customers = await Customer.find({ user: req.user._id });
+  res.status(200).json(customers);
 });
 
 // @desc    Fetch single customer
@@ -23,4 +23,38 @@ const getCustomerById = asyncHandler(async (req, res) => {
   }
 });
 
-export { getCustomers, getCustomerById };
+// @desc    Create a customer
+// @route   POST /api/customers
+// @access  Private
+const createCustomer = asyncHandler(async (req, res) => {
+  const customer = new Customer({
+    user: req.user._id,
+    tag: "0000",
+    ro: "000000",
+    vehicle: "Vehicle",
+    name: "sample name",
+    phone: "0000000000",
+    description: "description",
+    isWaiting: true,
+  });
+
+  const createdCustomer = await customer.save();
+  res.status(201).json(createdCustomer);
+});
+
+// @desc    Delete a customer
+// @route   DELETE /api/customers/:id
+// @access  Private
+const deleteCustomer = asyncHandler(async (req, res) => {
+  const customer = await Customer.findById(req.params.id);
+
+  if (customer) {
+    await Customer.deleteOne({ _id: customer._id });
+    res.status(200).json({ message: "Customer removed" });
+  } else {
+    res.status(404);
+    throw new Error("Customer not found");
+  }
+});
+
+export { getMyCustomers, getCustomerById, createCustomer, deleteCustomer };

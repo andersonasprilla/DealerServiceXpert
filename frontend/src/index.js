@@ -13,19 +13,25 @@ import "./assets/styles/bootstrap.custom.css";
 import "./assets/styles/index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./Screens/Dashboard";
-import CustomerScreen from "./Screens/CustomerScreen";
+import CustomerDetailsScreen from "./Screens/CustomerDetailsScreen";
 import LoginScreen from "./Screens/LoginScreen";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<App />}>
-      <Route index={true} path='/login' element={<LoginScreen />} />
-      <Route path='/customer/:id' element={<CustomerScreen />} />
+// Create routes
+const routes = createRoutesFromElements(
+  <Route path='/' element={<App />}>
+    <Route index={true} element={<LoginScreen />} />
+    {""}
+    <Route path='/login' element={<LoginScreen />} />
+    <Route path='' element={<PrivateRoute />}>
       <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/customer/:id' element={<CustomerDetailsScreen />} />
     </Route>
-  )
+  </Route>
 );
+
+const router = createBrowserRouter(routes);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

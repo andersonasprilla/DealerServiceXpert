@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
-import { FaUser } from "react-icons/fa";
 import { LinkContainer } from "react-router-bootstrap";
 import logo from "../assets/logo.png";
 import { useSelector, useDispatch } from "react-redux";
@@ -49,9 +48,6 @@ const Header = () => {
             <Nav className='ms-auto'>
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id='username'>
-                  <LinkContainer to='/profile'>
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
-                  </LinkContainer>
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout
                   </NavDropdown.Item>

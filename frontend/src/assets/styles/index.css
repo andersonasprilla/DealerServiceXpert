@@ -55,3 +55,20 @@ table th {
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
 }
+
+/* CustomModal.css */
+
+.custom-modal-lg {
+  max-width: 1000px; /* Adjust the width as needed */
+}
+
+.custom-modal-lg .modal-dialog {
+  max-width: 100%;
+  width: auto;
+  margin: 1.75rem auto;
+}
+
+.custom-modal-lg .modal-content {
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
