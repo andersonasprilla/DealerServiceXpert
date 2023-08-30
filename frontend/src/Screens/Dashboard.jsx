@@ -11,10 +11,9 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
-import CustomerModal from "../components/CustomerModal";
+import CreateCustomerModal from "../components/CreateCustomerModal";
 
 const Dashboard = () => {
-  const [showModal, setShowModal] = useState(false);
   const {
     data: customers,
     isLoading,
@@ -28,10 +27,20 @@ const Dashboard = () => {
   const [deleteCustomer, { isLoading: loadingDelete }] =
     useDeleteCustomerMutation();
 
-  const createCustomerHandler = async () => {
+  const [showCreateModal, setShowCreateModal] = useState(false);
+
+  const openCreateModal = () => {
+    setShowCreateModal(true);
+  };
+
+  const closeCreateModal = () => {
+    setShowCreateModal(false);
+  };
+
+  const createCustomerHandler = async (newCustomerData) => {
     if (window.confirm("Are you sure?")) {
       try {
-        await createCustomer();
+        await createCustomer(newCustomerData);
         refetch();
       } catch (err) {
         toast.error(err?.data?.message || err.error);
@@ -53,7 +62,7 @@ const Dashboard = () => {
   return (
     <>
       <Col className='text-end'>
-        <Button className='btn-sm m-3' onClick={() => setShowModal(true)}>
+        <Button className='my-3' onClick={openCreateModal}>
           <FaEdit /> Create Customer
         </Button>
       </Col>
@@ -115,10 +124,10 @@ const Dashboard = () => {
               ))}
             </tbody>
           </Table>
-          <CustomerModal
-            showModal={showModal}
-            setShowModal={setShowModal}
-            createCustomer={createCustomerHandler}
+          <CreateCustomerModal
+            show={showCreateModal}
+            onClose={closeCreateModal}
+            refetchCustomers={refetch}
           />
         </>
       )}

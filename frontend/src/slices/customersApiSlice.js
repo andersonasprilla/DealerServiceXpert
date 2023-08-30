@@ -16,9 +16,10 @@ export const customersApiSlice = apiSlice.injectEndpoints({
       keepUnusedDataFor: 5,
     }),
     createCustomer: builder.mutation({
-      query: () => ({
+      query: (newCustomerData) => ({
         url: CUSTOMERS_URL,
         method: "POST",
+        body: newCustomerData, // Include the user input data here
       }),
       invalidatesTags: ["Customer"],
     }),

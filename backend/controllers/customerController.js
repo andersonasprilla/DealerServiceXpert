@@ -27,19 +27,25 @@ const getCustomerById = asyncHandler(async (req, res) => {
 // @route   POST /api/customers
 // @access  Private
 const createCustomer = asyncHandler(async (req, res) => {
+  const { tag, ro, vehicle, name, phone, description, isWaiting } = req.body;
+
   const customer = new Customer({
     user: req.user._id,
-    tag: "0000",
-    ro: "000000",
-    vehicle: "Vehicle",
-    name: "sample name",
-    phone: "0000000000",
-    description: "description",
-    isWaiting: true,
+    tag,
+    ro,
+    vehicle,
+    name,
+    phone,
+    description,
+    isWaiting,
   });
 
-  const createdCustomer = await customer.save();
-  res.status(201).json(createdCustomer);
+  try {
+    const createdCustomer = await customer.save();
+    res.status(201).json(createdCustomer);
+  } catch (error) {
+    res.status(400).json({ message: "Failed to create customer", error });
+  }
 });
 
 // @desc    Delete a customer
