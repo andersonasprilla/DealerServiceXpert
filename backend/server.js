@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import path from "path";
 dotenv.config();
 import connectDB from "./config/db.js";
 import customerRoutes from "./routes/customerRoutes.js";
