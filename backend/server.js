@@ -6,7 +6,7 @@ import connectDB from "./config/db.js";
 import customerRoutes from "./routes/customerRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5002;
 
 connectDB();
 
