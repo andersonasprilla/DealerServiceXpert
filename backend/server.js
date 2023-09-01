@@ -19,12 +19,19 @@ app.use(express.urlencoded({ extended: true }));
 // Cookie parser middleware
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.send("Api is Running...");
-});
-
 app.use("/api/customers", customerRoutes);
 app.use("/api/users", userRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("Api is Running...");
+  });
+}
 
 app.use(notFound);
 

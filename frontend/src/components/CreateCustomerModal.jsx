@@ -50,6 +50,7 @@ const CreateCustomerModal = ({ show, onClose, refetchCustomers }) => {
               name='tag'
               value={newCustomerData.tag}
               onChange={handleInputChange}
+              autoComplete='off'
             />
           </Form.Group>
 
@@ -61,6 +62,7 @@ const CreateCustomerModal = ({ show, onClose, refetchCustomers }) => {
               name='ro'
               value={newCustomerData.ro}
               onChange={handleInputChange}
+              autoComplete='off'
             />
           </Form.Group>
 
@@ -72,6 +74,7 @@ const CreateCustomerModal = ({ show, onClose, refetchCustomers }) => {
               name='vehicle'
               value={newCustomerData.vehicle}
               onChange={handleInputChange}
+              autoComplete='off'
             />
           </Form.Group>
 
@@ -83,6 +86,7 @@ const CreateCustomerModal = ({ show, onClose, refetchCustomers }) => {
               name='name'
               value={newCustomerData.name}
               onChange={handleInputChange}
+              autoComplete='off'
             />
           </Form.Group>
 
@@ -94,6 +98,7 @@ const CreateCustomerModal = ({ show, onClose, refetchCustomers }) => {
               name='phone'
               value={newCustomerData.phone}
               onChange={handleInputChange}
+              autoComplete='off'
             />
           </Form.Group>
 
@@ -105,6 +110,7 @@ const CreateCustomerModal = ({ show, onClose, refetchCustomers }) => {
               name='description'
               value={newCustomerData.description}
               onChange={handleInputChange}
+              autoComplete='off'
             />
           </Form.Group>
 
@@ -115,6 +121,7 @@ const CreateCustomerModal = ({ show, onClose, refetchCustomers }) => {
               name='isWaiting'
               value={newCustomerData.isWaiting}
               onChange={handleInputChange}
+              autoComplete='off'
             />
           </Form.Group>
           <Button variant='primary' type='submit' disabled={isLoading}>

@@ -37,14 +37,12 @@ const Dashboard = () => {
     setShowCreateModal(false);
   };
 
-  const createCustomerHandler = async (newCustomerData) => {
-    if (window.confirm("Are you sure?")) {
-      try {
-        await createCustomer(newCustomerData);
-        refetch();
-      } catch (err) {
-        toast.error(err?.data?.message || err.error);
-      }
+  const createHandler = async (newCustomerData) => {
+    try {
+      await createCustomer(newCustomerData);
+      refetch();
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
     }
   };
 
