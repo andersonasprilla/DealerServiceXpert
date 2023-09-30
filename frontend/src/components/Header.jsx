@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <header>
       <Navbar
-        style={{ backgroundColor: "#007cc0" }}
+        style={{ backgroundColor: "#112D4E" }}
         variant='dark'
         expand='md'
         collapseOnSelect
@@ -36,11 +36,10 @@ const Header = () => {
               <img
                 src={logo}
                 alt='DSXpert'
-                width='70px'
-                height='50px'
+                width='200px'
+                height='65px'
                 style={{ marginRight: "10px" }}
               />
-              DealerServiceXpert
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />

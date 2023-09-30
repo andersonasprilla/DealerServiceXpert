@@ -16,7 +16,11 @@ const CustomerDetailsScreen = () => {
         Go Back
       </Link>
       <div>
-        <h1>Customer Details Screen</h1>
+        <h1>Customer Details Screen TODO:</h1>
+        <h1>*card component with vehicle image</h1>
+        <h1>**card component with customer details</h1>
+        <h1>***card component with service details</h1>
+        <h1>****twilio integration</h1>
       </div>
     </>
   );
